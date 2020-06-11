@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { customMedia } from "./Breakpoints";
 
 export const Text = styled.p`
   color: ${(props) => props.theme.text};
@@ -79,6 +80,9 @@ export const Container = styled.div`
   max-height: calc(100vh - 100px);
   display: flex;
   padding: 0 80px;
+  ${customMedia.lessThan("tablet")`
+    padding: 0 30px;
+`}
 `;
 
 export const Routes = styled.div`

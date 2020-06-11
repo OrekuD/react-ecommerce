@@ -57,7 +57,7 @@ const GlobalStyle = createGlobalStyle`
     
 
     body {
-      background-color: ${(props) => props.theme.background}
+      background-color: ${(props) => props.theme.background};
     }
   
 `;
@@ -78,8 +78,8 @@ const App = () => {
   const routes = [
     { name: "Home", path: "/", component: Home },
     { name: "Profile", path: "/profile", component: Profile },
-    { name: "Life style", path: "/lifestyle", component: Lifestyle },
     { name: "Cart", path: "/cart", component: Cart },
+    { name: "Life style", path: "/lifestyle", component: Lifestyle },
     { name: "Checkout", path: "/checkout", component: Checkout },
     { name: "Electronics", path: "/electronics", component: Electronics },
     { name: "Wishlist", path: "/wishlist", component: Wishlist },

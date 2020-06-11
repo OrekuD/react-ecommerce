@@ -36,10 +36,12 @@ const SideBar = () => {
 
   return (
     <SideBarContainer>
-      <Text josefinsans>Categories</Text>
+      <Text josefinsans id="side-bar">
+        Categories
+      </Text>
       {menuItems.map(({ to, name, menuIcon }) => (
         <NavLink key={Math.random().toString()} to={to}>
-          <NavItem>
+          <NavItem id="side-bar">
             {menuIcon}
             <Text small josfinsans>
               {name}

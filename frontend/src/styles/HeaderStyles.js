@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { customMedia } from "./Breakpoints";
 
 export const HeaderContainer = styled.div`
   height: 100px;
@@ -6,6 +7,9 @@ export const HeaderContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  ${customMedia.lessThan("tablet")`
+    padding: 0 30px;
+  `}
 `;
 
 export const LogoSection = styled.div`
@@ -14,6 +18,9 @@ export const LogoSection = styled.div`
 
 export const SearchToolBar = styled.div`
   width: 55%;
+  ${customMedia.lessThan("tablet")`
+    width: 40%;
+  `}
 `;
 
 export const UserDetails = styled.div`
@@ -21,6 +28,10 @@ export const UserDetails = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  ${customMedia.lessThan("tablet")`
+    width: 35%;
+  `}
 `;
 
 export const SearchInputContainer = styled.div`

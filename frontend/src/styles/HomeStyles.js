@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { customMedia } from "./Breakpoints";
 
 export const HomeContainer = styled.div`
   display: flex;
@@ -22,7 +23,10 @@ export const Card = styled.div`
   ${(props) =>
     props.big &&
     css`
-      width: 63vw;
+      width: 64vw;
       height: 400px;
+      ${customMedia.lessThan("tablet")`
+        width: 66vw;
+      `}
     `}
 `;
