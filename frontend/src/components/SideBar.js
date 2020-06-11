@@ -1,32 +1,52 @@
-import React from "react";
-import { SideBarContainer } from "../styles/SideBarStyles";
+import React, { useEffect } from "react";
+import { SideBarContainer, NavItem } from "../styles/SideBarStyles";
 import { Text } from "../styles/GlobalStyles";
 import { NavLink } from "react-router-dom";
+import { GamePad, Clothing } from "../svg/Svgs";
 
 const SideBar = () => {
+  useEffect(() => {
+    fetch("http://localhost:5000/products")
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  }, []);
+
+  const menuItems = [
+    {
+      to: "/lifestyle",
+      name: "Lifestyle",
+      menuIcon: <Clothing color="#121212" size="30px" />,
+    },
+    {
+      to: "/electronics",
+      name: "Electronics",
+      menuIcon: <GamePad color="#121212" size="30px" />,
+    },
+    {
+      to: "/gaming",
+      name: "Game and entertainment",
+      menuIcon: <GamePad color="#121212" size="30px" />,
+    },
+    {
+      to: "/home-equipment",
+      name: "Home and equipment",
+      menuIcon: <GamePad color="#121212" size="30px" />,
+    },
+  ];
+
   return (
     <SideBarContainer>
       <Text josefinsans>Categories</Text>
-      <NavLink to="/lifestyle">
-        <Text small josfinsans>
-          Lifestyle
-        </Text>
-      </NavLink>
-      <NavLink to="/electronics">
-        <Text small josfinsans>
-          Electronics
-        </Text>
-      </NavLink>
-      <NavLink to="/game">
-        <Text small josfinsans>
-          Game and entertainment
-        </Text>
-      </NavLink>
-      <NavLink to="/home-equipment">
-        <Text small josfinsans>
-          Lifestyle
-        </Text>
-      </NavLink>
+      {menuItems.map(({ to, name, menuIcon }) => (
+        <NavLink key={Math.random().toString()} to={to}>
+          <NavItem>
+            {menuIcon}
+            <Text small josfinsans>
+              {name}
+            </Text>
+          </NavItem>
+        </NavLink>
+      ))}
     </SideBarContainer>
   );
 };

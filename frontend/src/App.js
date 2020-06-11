@@ -57,7 +57,6 @@ const GlobalStyle = createGlobalStyle`
     
 
     body {
-      overflow: hidden;
       background-color: ${(props) => props.theme.background}
     }
   
@@ -101,7 +100,7 @@ const App = () => {
           <SideBar />
           <Routes>
             {routes.map(({ name, path, component }) => (
-              <Route path={path} exact component={component} />
+              <Route key={name} path={path} exact component={component} />
             ))}
           </Routes>
         </Container>

@@ -76,11 +76,12 @@ export const Text = styled.p`
 `;
 
 export const Container = styled.div`
-  height: 100%;
+  max-height: calc(100vh - 100px);
   display: flex;
   padding: 0 80px;
 `;
 
 export const Routes = styled.div`
   width: 75%;
+  overflow: scroll;
 `;

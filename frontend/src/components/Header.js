@@ -11,16 +11,19 @@ import {
   ProfileImage,
 } from "../styles/HeaderStyles";
 import { Text } from "../styles/GlobalStyles";
-import { Search, ShoppingCart, ArrowDown } from "../svg/Svgs";
+import { Search, ArrowDown, ShoppingCart2 } from "../svg/Svgs";
+import { Link } from "react-router-dom";
 
 const cart = 2;
 const Header = () => {
   return (
     <HeaderContainer>
       <LogoSection>
-        <Text uppercase josefinsans>
-          ShopApp
-        </Text>
+        <Link to="/">
+          <Text uppercase josefinsans>
+            ShopApp
+          </Text>
+        </Link>
       </LogoSection>
       <SearchToolBar>
         <SearchInputContainer>
@@ -30,7 +33,7 @@ const Header = () => {
       </SearchToolBar>
       <UserDetails>
         <CartContainer>
-          <ShoppingCart color="#121212" size="20px" />
+          <ShoppingCart2 color="#121212" size="20px" />
           <Text small light>
             Cart : {cart}
           </Text>
