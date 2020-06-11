@@ -18,6 +18,7 @@ export const LogoSection = styled.div`
 
 export const SearchToolBar = styled.div`
   width: 55%;
+
   ${customMedia.lessThan("tablet")`
     width: 40%;
   `}
