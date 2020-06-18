@@ -32,6 +32,11 @@ const Header = () => {
         </SearchInputContainer>
       </SearchToolBar>
       <UserDetails>
+        <Link to="/products">
+          <Text small light>
+            Products
+          </Text>
+        </Link>
         <Link to="/cart">
           <CartContainer>
             <ShoppingCart2 color="#121212" size="20px" />

@@ -33,41 +33,17 @@ export const Text = styled.p`
     css`
       text-transform: uppercase;
     `}
-  
-  ${(props) =>
-    props.lowercase &&
-    css`
-      text-transform: lowercase;
-    `}
-  ${(props) =>
-    props.light &&
-    css`
-      font-weight: 500;
-    `}
+
   ${(props) =>
     props.bold &&
     css`
       font-weight: 700;
     `}
+
   ${(props) =>
     props.heavy &&
     css`
       font-weight: bold;
-    `}
-  ${(props) =>
-    props.exo &&
-    css`
-      font-family: "Exo";
-    `}
-  ${(props) =>
-    props.dms &&
-    css`
-      font-family: "DMS";
-    `}
-  ${(props) =>
-    props.avs &&
-    css`
-      font-family: "AVS";
     `}
   ${(props) =>
     props.josefinsans &&
@@ -77,54 +53,48 @@ export const Text = styled.p`
 `;
 
 export const Container = styled.div`
-  max-height: calc(100vh - 100px);
   display: flex;
-  padding: 0 40px;
-  ${customMedia.lessThan("tablet")`
-    padding: 0 30px;
-`}
-`;
-
-export const Routes = styled.div`
-  width: 75%;
-  overflow: scroll;
+  padding: 0 10px;
+  background: blue;
+  margin: 0;
+  width: 100%;
 `;
 
 export const Card = styled.div`
-  width: 400px;
-  height: 150px;
   border-radius: 10px;
-  margin-bottom: 30px;
   cursor: pointer;
   overflow: hidden;
+  width: 200px;
+  height: 200px;
 
-  ${(props) =>
-    props.wide &&
-    css`
-      width: 40%;
-    `}
-
-  ${(props) =>
-    props.big &&
-    css`
-      width: 64vw;
-      height: 400px;
-      ${customMedia.lessThan("tablet")`
-        width: 66vw;
-      `}
-    `}
-  
   ${(props) =>
     props.apparel &&
     css`
-      width: 20%;
-      height: 250px;
-      margin: 0 30px 40px 0;
+      width: 22%;
+      height: 300px;
+      margin-bottom: 40px;
+
+      ${customMedia.lessThan("tablet")`
+        width: 30%;
+      `}
+
+      ${customMedia.lessThan("largePhone")`
+        width: 40%;
+      `}
+
+      ${customMedia.lessThan("smallPhone")`
+        width: 90%;
+      `}
     `}
 `;
 
 export const Layout = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  flex: 1;
+
+  ${customMedia.lessThan("largePhone")`
+        background-color: red;
+      `}
 `;

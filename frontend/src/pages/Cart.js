@@ -3,7 +3,8 @@ import gsap from "gsap";
 
 const Cart = () => {
   const enterAnimation = () => {
-    gsap.to("#side-bar", {
+    const tl = gsap.timeline();
+    tl.to("#side-bar", {
       duration: 1,
       x: -400,
       stagger: {
@@ -13,7 +14,8 @@ const Cart = () => {
   };
 
   const exitAnimation = () => {
-    gsap.to("#side-bar", {
+    const tl = gsap.timeline();
+    tl.to("#side-bar", {
       duration: 1,
       x: 0,
       stagger: {
@@ -30,7 +32,11 @@ const Cart = () => {
     };
   });
 
-  return <div> Cart </div>;
+  return (
+    <div style={{ width: "100%", height: "100%", backgroundColor: "red" }}>
+      Cart
+    </div>
+  );
 };
 
 export default Cart;

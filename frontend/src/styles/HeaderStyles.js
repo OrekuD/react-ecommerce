@@ -7,8 +7,12 @@ export const HeaderContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   ${customMedia.lessThan("tablet")`
     padding: 0 30px;
+  `}
+  ${customMedia.lessThan("largePhone")`
+    padding: 0 10px;
   `}
 `;
 
@@ -17,7 +21,7 @@ export const LogoSection = styled.div`
 `;
 
 export const SearchToolBar = styled.div`
-  width: 55%;
+  width: 45%;
 
   ${customMedia.lessThan("tablet")`
     width: 40%;
@@ -25,7 +29,7 @@ export const SearchToolBar = styled.div`
 `;
 
 export const UserDetails = styled.div`
-  width: 20%;
+  width: 30%;
   display: flex;
   align-items: center;
   justify-content: space-between;
