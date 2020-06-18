@@ -3,7 +3,7 @@ import { customMedia } from "./Breakpoints";
 
 export const HeaderContainer = styled.div`
   height: 100px;
-  padding: 0 80px;
+  padding: 0 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;

@@ -79,7 +79,7 @@ export const Text = styled.p`
 export const Container = styled.div`
   max-height: calc(100vh - 100px);
   display: flex;
-  padding: 0 80px;
+  padding: 0 40px;
   ${customMedia.lessThan("tablet")`
     padding: 0 30px;
 `}
@@ -88,4 +88,43 @@ export const Container = styled.div`
 export const Routes = styled.div`
   width: 75%;
   overflow: scroll;
+`;
+
+export const Card = styled.div`
+  width: 400px;
+  height: 150px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  cursor: pointer;
+  overflow: hidden;
+
+  ${(props) =>
+    props.wide &&
+    css`
+      width: 40%;
+    `}
+
+  ${(props) =>
+    props.big &&
+    css`
+      width: 64vw;
+      height: 400px;
+      ${customMedia.lessThan("tablet")`
+        width: 66vw;
+      `}
+    `}
+  
+  ${(props) =>
+    props.apparel &&
+    css`
+      width: 20%;
+      height: 250px;
+      margin: 0 30px 40px 0;
+    `}
+`;
+
+export const Layout = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 `;

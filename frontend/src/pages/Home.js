@@ -1,32 +1,15 @@
-import React, { useEffect } from "react";
-import { Text } from "../styles/GlobalStyles";
-import { HomeContainer, Card } from "../styles/HomeStyles";
-import gsap from "gsap";
+import React from "react";
+import { HomeContainer } from "../styles/HomeStyles";
+import { Card } from "../styles/GlobalStyles";
 
 const Home = () => {
-  const enterAnimation = () => {
-    gsap.from("#home", {
-      duration: 1,
-      ease: "power3.out",
-      scale: 0.8,
-      stagger: {
-        amount: 0.5,
-      },
-    });
-  };
-
-  useEffect(() => {
-    enterAnimation();
-  });
   return (
-    <>
-      <HomeContainer>
-        <Card id="home" big></Card>
-        <Card> </Card>
-        <Card> </Card>
-        <Card> </Card>
-      </HomeContainer>
-    </>
+    <HomeContainer>
+      <Card big></Card>
+      <Card> </Card>
+      <Card> </Card>
+      <Card> </Card>
+    </HomeContainer>
   );
 };
 
