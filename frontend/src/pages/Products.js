@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
-import { Layout, Card } from "../styles/GlobalStyles";
+import { Layout, Text } from "../styles/GlobalStyles";
+import { ProductCard, Button, Content } from "../styles/ProductsStyles";
 import gsap from "gsap";
 import { Link } from "react-router-dom";
 import { Context } from "../context/context";
+import { Heart2 } from "../svg/Svgs";
 
 const Products = () => {
   const { products } = useContext(Context);
@@ -34,8 +36,7 @@ const Products = () => {
   return (
     <Layout>
       {products.map((product) => (
-        <Card
-          apparel
+        <ProductCard
           onMouseEnter={() => zoomIn(product.id)}
           onMouseLeave={() => zoomOut(product.id)}
           key={product.id}
@@ -56,8 +57,13 @@ const Products = () => {
               }}
             />
           </Link>
-          <div id={`image-content-${product.id.slice(2, 7)}`}> Add </div>
-        </Card>
+          <Content id={`image-content-${product.id.slice(2, 7)}`}>
+            <Button>
+              <Heart2 color="#121212" size="16px" />
+            </Button>
+            <Button> sd </Button>
+          </Content>
+        </ProductCard>
       ))}
     </Layout>
   );

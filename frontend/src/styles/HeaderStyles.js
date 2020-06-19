@@ -10,19 +10,28 @@ export const HeaderContainer = styled.div`
   padding: 0 40px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   background-color: ${(props) => props.theme.background};
   z-index: 10;
 
   ${customMedia.lessThan("tablet")`
     padding: 0 30px;
-  `} ${customMedia.lessThan("largePhone")`
+  `};
+
+  ${customMedia.lessThan("largePhone")`
     padding: 0 10px;
   `};
 `;
 
 export const LogoSection = styled.div`
   width: 25%;
+
+  ${customMedia.lessThan("tablet")`
+    width: 16%;
+  `};
+
+  ${customMedia.lessThan("largePhone")`
+    width: 30%;
+  `};
 `;
 
 export const SearchToolBar = styled.div`
@@ -30,6 +39,10 @@ export const SearchToolBar = styled.div`
 
   ${customMedia.lessThan("tablet")`
     width: 40%;
+  `};
+
+  ${customMedia.lessThan("largePhone")`
+    display: none;
   `}
 `;
 
@@ -40,8 +53,19 @@ export const UserDetails = styled.div`
   justify-content: space-between;
 
   ${customMedia.lessThan("tablet")`
-    width: 35%;
+    width: 45%;
   `}
+
+  ${customMedia.lessThan("largePhone")`
+    width: 70%;
+    justify-content: flex-end;
+    padding-right: 30px;
+  `}
+
+  /* ${customMedia.lessThan("smallPhone")`
+    width: 50%;
+    justify-content: flex-end;
+  `} */
 `;
 
 export const SearchInputContainer = styled.div`
@@ -75,8 +99,12 @@ export const CartContainer = styled.div`
   align-items: center;
 
   svg {
-    margin: 0 10px 0 0;
+    margin: 0 8px 5px 0;
   }
+
+  ${customMedia.lessThan("largePhone")`
+    margin-left: 20px;
+  `}
 `;
 
 export const ProfileContainer = styled.div`
@@ -87,6 +115,10 @@ export const ProfileContainer = styled.div`
     margin: 2px 0 0 10px;
     cursor: pointer;
   }
+
+  ${customMedia.lessThan("largePhone")`
+    display: none;
+  `}
 `;
 
 export const ProfileImage = styled.div`
@@ -94,5 +126,5 @@ export const ProfileImage = styled.div`
   height: 30px;
   background: purple;
   border-radius: 100%;
-  margin-right: 15px;
+  margin-right: 10px;
 `;

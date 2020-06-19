@@ -5,6 +5,10 @@ export const ProductContainer = styled.div`
   display: flex;
   height: 100%;
   width: 100%;
+
+  ${customMedia.lessThan("largePhone")`
+    flex-direction: column;
+  `}
 `;
 
 export const LeftContainer = styled.div`
@@ -12,11 +16,19 @@ export const LeftContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  ${customMedia.lessThan("largePhone")`
+    width: 100%;
+  `}
 `;
 
 export const RightContainer = styled.div`
   width: 45%;
   margin-top: 18px;
+
+  ${customMedia.lessThan("largePhone")`
+    width: 100%;
+  `}
 `;
 
 export const Title = styled.div`
