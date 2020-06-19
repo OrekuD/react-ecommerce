@@ -1,24 +1,33 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Layout, Card } from "../styles/GlobalStyles";
-import { products } from "../dummy-data";
 import gsap from "gsap";
 import { Link } from "react-router-dom";
-import SimpleBar from "simplebar-react";
+import { Context } from "../context/context";
 
 const Products = () => {
+  const { products } = useContext(Context);
+
   const zoomIn = (id) => {
     const tl = gsap.timeline();
-    tl.to(`#image-${id.slice(2, 5)}`, {
+    tl.to(`#image-${id.slice(2, 7)}`, {
       duration: 0.6,
       scale: 1.1,
+    }).to(`#image-content-${id.slice(2, 7)}`, {
+      duration: 0.6,
+      delay: -0.6,
+      y: -60,
     });
   };
 
   const zoomOut = (id) => {
     const tl = gsap.timeline();
-    tl.to(`#image-${id.slice(2, 5)}`, {
+    tl.to(`#image-${id.slice(2, 7)}`, {
       duration: 0.6,
       scale: 1,
+    }).to(`#image-content-${id.slice(2, 7)}`, {
+      duration: 0.6,
+      delay: -0.6,
+      y: 5,
     });
   };
 
@@ -32,11 +41,11 @@ const Products = () => {
           key={product.id}
         >
           <Link
-            to={`/product/${product.id}`}
+            to={`/product?id=${product.id}`}
             style={{ height: "100%", width: "100%" }}
           >
             <img
-              id={`image-${product.id.slice(2, 5)}`}
+              id={`image-${product.id.slice(2, 7)}`}
               src={product.image}
               alt="product"
               style={{
@@ -47,6 +56,7 @@ const Products = () => {
               }}
             />
           </Link>
+          <div id={`image-content-${product.id.slice(2, 7)}`}> Add </div>
         </Card>
       ))}
     </Layout>

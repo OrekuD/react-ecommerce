@@ -10,7 +10,7 @@ import Image8 from "./images/apparel/22.jpg";
 export const products = [
   {
     id: Math.random().toString(),
-    name: "Fugiat laboris",
+    name: "Nike 1",
     description:
       "Sint incididunt anim proident magna cupidatat anim sit consequat sint dolore occaecat ea non amet.",
     price: 39.99,
@@ -18,7 +18,7 @@ export const products = [
   },
   {
     id: Math.random().toString(),
-    name: "Fugiat laboris",
+    name: "Nike 2",
     description:
       "Sint incididunt anim proident magna cupidatat anim sit consequat sint dolore occaecat ea non amet.",
     price: 139.99,
@@ -26,7 +26,7 @@ export const products = [
   },
   {
     id: Math.random().toString(),
-    name: "Fugiat laboris",
+    name: "Nike 3",
     description:
       "Sint incididunt anim proident magna cupidatat anim sit consequat sint dolore occaecat ea non amet.",
     price: 9.99,
@@ -34,7 +34,7 @@ export const products = [
   },
   {
     id: Math.random().toString(),
-    name: "Fugiat laboris",
+    name: "Nike 4",
     description:
       "Sint incididunt anim proident magna cupidatat anim sit consequat sint dolore occaecat ea non amet.",
     price: 39.99,
@@ -42,7 +42,7 @@ export const products = [
   },
   {
     id: Math.random().toString(),
-    name: "Fugiat laboris",
+    name: "Nike 5",
     description:
       "Sint incididunt anim proident magna cupidatat anim sit consequat sint dolore occaecat ea non amet.",
     price: 39.99,
@@ -50,7 +50,7 @@ export const products = [
   },
   {
     id: Math.random().toString(),
-    name: "Fugiat laboris",
+    name: "Nike 6",
     description:
       "Sint incididunt anim proident magna cupidatat anim sit consequat sint dolore occaecat ea non amet.",
     price: 139.99,
@@ -58,7 +58,7 @@ export const products = [
   },
   {
     id: Math.random().toString(),
-    name: "Fugiat laboris",
+    name: "Nike 7",
     description:
       "Sint incididunt anim proident magna cupidatat anim sit consequat sint dolore occaecat ea non amet.",
     price: 9.99,
@@ -66,7 +66,7 @@ export const products = [
   },
   {
     id: Math.random().toString(),
-    name: "Fugiat laboris",
+    name: "Nike 8",
     description:
       "Sint incididunt anim proident magna cupidatat anim sit consequat sint dolore occaecat ea non amet.",
     price: 39.99,

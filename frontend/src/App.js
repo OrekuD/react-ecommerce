@@ -2,16 +2,16 @@ import React, { useContext } from "react";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { Route } from "react-router-dom";
 
-import JosefinSans from "./fonts/JosefinSans.ttf";
-
 import Header from "./components/Header";
 import { Context } from "./context/context";
-import { Container, Routes } from "./styles/GlobalStyles";
+import { Container } from "./styles/GlobalStyles";
+import JosefinSans from "./fonts/JosefinSans.ttf";
 
 // pages
 import { Home, Cart, Profile, Product, Products } from "./pages";
 
 const GlobalStyle = createGlobalStyle`
+    
     @font-face {
       font-family: "JosefinSans";
       src: url(${JosefinSans});
@@ -48,17 +48,15 @@ const App = () => {
   const { darkTheme } = useContext(Context);
 
   return (
-    <>
-      <ThemeProvider theme={darkTheme ? dark : light}>
-        <GlobalStyle />
-        <Header />
-        <Container>
-          {routes.map(({ name, path, component }) => (
-            <Route key={name} path={path} exact component={component} />
-          ))}
-        </Container>
-      </ThemeProvider>
-    </>
+    <ThemeProvider theme={darkTheme ? dark : light}>
+      <GlobalStyle />
+      <Header />
+      <Container>
+        {routes.map(({ name, path, component }) => (
+          <Route key={name} path={path} exact component={component} />
+        ))}
+      </Container>
+    </ThemeProvider>
   );
 };
 

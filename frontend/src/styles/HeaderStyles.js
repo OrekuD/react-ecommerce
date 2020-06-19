@@ -2,18 +2,23 @@ import styled from "styled-components";
 import { customMedia } from "./Breakpoints";
 
 export const HeaderContainer = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 100px;
   padding: 0 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: ${(props) => props.theme.background};
+  z-index: 10;
 
   ${customMedia.lessThan("tablet")`
     padding: 0 30px;
-  `}
-  ${customMedia.lessThan("largePhone")`
+  `} ${customMedia.lessThan("largePhone")`
     padding: 0 10px;
-  `}
+  `};
 `;
 
 export const LogoSection = styled.div`
