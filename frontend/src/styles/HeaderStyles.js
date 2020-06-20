@@ -25,6 +25,10 @@ export const HeaderContainer = styled.div`
 export const LogoSection = styled.div`
   width: 25%;
 
+  ${customMedia.lessThan("smallDesktop")`
+    width: 20%;
+  `};
+
   ${customMedia.lessThan("tablet")`
     width: 16%;
   `};
@@ -51,6 +55,10 @@ export const UserDetails = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  ${customMedia.lessThan("smallDesktop")`
+    width: 35%;
+  `};
 
   ${customMedia.lessThan("tablet")`
     width: 45%;

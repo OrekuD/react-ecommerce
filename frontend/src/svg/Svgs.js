@@ -675,12 +675,36 @@ const ChatBubble2 = ({ color, size }) => (
   </svg>
 );
 
+const Minus = ({ color, size }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+  >
+    <path fill={color} d="M0 10h24v4h-24z" />
+  </svg>
+);
+
+const Plus = ({ color, size }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+  >
+    <path fill={color} d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" />
+  </svg>
+);
+
 export {
   Twitter,
   ChatBubble,
   WhatsApp,
   Facebook,
   Instagram,
+  Minus,
+  Plus,
   ChatBubble2,
   Github,
   Search,

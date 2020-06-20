@@ -4,16 +4,19 @@ import { ProductCard, Button, Content } from "../styles/ProductsStyles";
 import gsap from "gsap";
 import { Link } from "react-router-dom";
 import { Context } from "../context/context";
-import { Heart2 } from "../svg/Svgs";
+import { Heart2, Plus, Minus } from "../svg/Svgs";
 
 const Products = () => {
-  const { products } = useContext(Context);
+  const { products, manageCart, getProduct } = useContext(Context);
 
   const zoomIn = (id) => {
+    if (window.innerWidth <= 1024) {
+      return;
+    }
     const tl = gsap.timeline();
     tl.to(`#image-${id.slice(2, 7)}`, {
       duration: 0.6,
-      scale: 1.1,
+      scale: 1.15,
     }).to(`#image-content-${id.slice(2, 7)}`, {
       duration: 0.6,
       delay: -0.6,
@@ -22,6 +25,9 @@ const Products = () => {
   };
 
   const zoomOut = (id) => {
+    if (window.innerWidth <= 1024) {
+      return;
+    }
     const tl = gsap.timeline();
     tl.to(`#image-${id.slice(2, 7)}`, {
       duration: 0.6,
@@ -58,10 +64,18 @@ const Products = () => {
             />
           </Link>
           <Content id={`image-content-${product.id.slice(2, 7)}`}>
-            <Button>
+            <Button onClick={() => manageCart("REMOVE", product)}>
               <Heart2 color="#121212" size="16px" />
             </Button>
-            <Button> sd </Button>
+            {getProduct(product) ? (
+              <Button onClick={() => manageCart("REMOVE", product)}>
+                <Minus color="#121212" size="14px" />
+              </Button>
+            ) : (
+              <Button onClick={() => manageCart("ADD", product)}>
+                <Plus color="#121212" size="14px" />
+              </Button>
+            )}
           </Content>
         </ProductCard>
       ))}

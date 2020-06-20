@@ -15,7 +15,7 @@ import Image7 from "../images/apparel/21.jpg";
 
 const Product = ({ location }) => {
   const [product, setProduct] = useState({});
-  const { products } = useContext(Context);
+  const { products, manageCart, getProduct } = useContext(Context);
 
   useEffect(() => {
     const data = queryString.parse(location.search);
@@ -52,11 +52,19 @@ const Product = ({ location }) => {
             <Text bigger> {product.price} </Text>
           </ContentTop>
           <Text> {product.description} </Text>
-          <Button>
-            <Text color="#ffffff" tiny uppercase>
-              Add to cart
-            </Text>
-          </Button>
+          {getProduct(product) ? (
+            <Button onClick={() => manageCart("REMOVE", product)}>
+              <Text color="#ffffff" tiny uppercase>
+                Remove from cart
+              </Text>
+            </Button>
+          ) : (
+            <Button onClick={() => manageCart("ADD", product)}>
+              <Text color="#ffffff" tiny uppercase>
+                Add to cart
+              </Text>
+            </Button>
+          )}
         </Content>
       </RightContainer>
     </ProductContainer>

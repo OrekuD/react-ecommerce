@@ -1,41 +1,44 @@
-import React, { useEffect } from "react";
-import gsap from "gsap";
+import React from "react";
+import { CartContainer } from "../styles/CartStyles";
+import { Text } from "../styles/GlobalStyles";
+import { useContext } from "react";
+import { Context } from "../context/context";
+import CartItem from "../components/CartItem";
+import Image7 from "../images/apparel/20.jpg";
+import Image8 from "../images/apparel/19.jpg";
 
 const Cart = () => {
-  const enterAnimation = () => {
-    const tl = gsap.timeline();
-    tl.to("#side-bar", {
-      duration: 1,
-      x: -400,
-      stagger: {
-        amount: 0.1,
-      },
-    });
-  };
+  const { cart } = useContext(Context);
 
-  const exitAnimation = () => {
-    const tl = gsap.timeline();
-    tl.to("#side-bar", {
-      duration: 1,
-      x: 0,
-      stagger: {
-        amount: 0.1,
-      },
-    });
-  };
-
-  useEffect(() => {
-    enterAnimation();
-
-    return () => {
-      exitAnimation();
-    };
-  });
+  // const cart = [
+  //   {
+  //     id: Math.random().toString(),
+  //     name: "Nike 7",
+  //     count: 2,
+  //     total: 19.98,
+  //     description:
+  //       "Sint incididunt anim proident magna cupidatat anim sit consequat sint dolore occaecat ea non amet.",
+  //     price: 9.99,
+  //     image: Image7,
+  //   },
+  //   {
+  //     id: Math.random().toString(),
+  //     name: "Nike 8",
+  //     count: 2,
+  //     total: 19.98,
+  //     description:
+  //       "Sint incididunt anim proident magna cupidatat anim sit consequat sint dolore occaecat ea non amet.",
+  //     price: 39.99,
+  //     image: Image8,
+  //   },
+  // ];
 
   return (
-    <div style={{ width: "100%", height: "100%", backgroundColor: "red" }}>
-      Cart
-    </div>
+    <CartContainer>
+      {cart.map((item) => (
+        <CartItem key={item.id} item={item} />
+      ))}
+    </CartContainer>
   );
 };
 

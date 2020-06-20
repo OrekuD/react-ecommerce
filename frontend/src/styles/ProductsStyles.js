@@ -42,8 +42,8 @@ export const Content = styled.div`
   justify-content: center;
 
   ${customMedia.lessThan("smallDesktop")`
-        bottom: 0;
-    `}
+    bottom: 0;
+  `}
 `;
 
 export const Button = styled.div`
