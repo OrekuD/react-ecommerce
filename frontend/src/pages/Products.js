@@ -14,10 +14,10 @@ const Products = () => {
       return;
     }
     const tl = gsap.timeline();
-    tl.to(`#image-${id.slice(2, 7)}`, {
+    tl.to(`#image-${id.slice(2, id.length - 1)}`, {
       duration: 0.6,
       scale: 1.15,
-    }).to(`#image-content-${id.slice(2, 7)}`, {
+    }).to(`#image-content-${id.slice(2, id.length - 1)}`, {
       duration: 0.6,
       delay: -0.6,
       y: -60,
@@ -29,10 +29,10 @@ const Products = () => {
       return;
     }
     const tl = gsap.timeline();
-    tl.to(`#image-${id.slice(2, 7)}`, {
+    tl.to(`#image-${id.slice(2, id.length - 1)}`, {
       duration: 0.6,
       scale: 1,
-    }).to(`#image-content-${id.slice(2, 7)}`, {
+    }).to(`#image-content-${id.slice(2, id.length - 1)}`, {
       duration: 0.6,
       delay: -0.6,
       y: 5,
@@ -52,7 +52,7 @@ const Products = () => {
             style={{ height: "100%", width: "100%" }}
           >
             <img
-              id={`image-${product.id.slice(2, 7)}`}
+              id={`image-${product.id.slice(2, product.id.length - 1)}`}
               src={product.image}
               alt="product"
               style={{
@@ -63,7 +63,9 @@ const Products = () => {
               }}
             />
           </Link>
-          <Content id={`image-content-${product.id.slice(2, 7)}`}>
+          <Content
+            id={`image-content-${product.id.slice(2, product.id.length - 1)}`}
+          >
             <Button onClick={() => manageCart("REMOVE", product)}>
               <Heart2 color="#121212" size="16px" />
             </Button>
