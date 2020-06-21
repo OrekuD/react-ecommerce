@@ -4,17 +4,28 @@ import { products as items } from "../dummy-data";
 const Context = createContext();
 
 const Provider = ({ children }) => {
-  const [darkTheme, setDarkTheme] = useState(false);
+  const [darkTheme, setDarkTheme] = useState(true);
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
+  const [cartTotal, setCartTotal] = useState(0);
 
   useEffect(() => {
     setProducts(items);
   }, []);
 
+  useEffect(() => {
+    calculateCartTotal()
+  }, [cart]);
+
   const toggleTheme = () => {
     setDarkTheme(!darkTheme);
   };
+
+  const calculateCartTotal = () => {
+    let total = 0;
+    cart.forEach(item => total += item.total);
+    setCartTotal(total);
+  }
 
   const manageCart = (action, product) => {
     let tempCart = [];
@@ -23,7 +34,6 @@ const Provider = ({ children }) => {
     switch (action) {
       case "ADD":
         if (getProduct(product)) {
-          console.log("a");
           return;
         }
         product.count = 1;
@@ -57,7 +67,6 @@ const Provider = ({ children }) => {
           setCart(cart.filter((item) => item.id !== product.id));
           return;
         }
-        console.log("87");
         updatedProduct.count--;
         updatedProduct.total = updatedProduct.count * updatedProduct.price;
         tempCart[updatedProductIndex] = updatedProduct;
@@ -82,6 +91,7 @@ const Provider = ({ children }) => {
         cart,
         manageCart,
         getProduct,
+        cartTotal
       }}
     >
       {children}

@@ -8,7 +8,7 @@ import { Container } from "./styles/GlobalStyles";
 import JosefinSans from "./fonts/JosefinSans.ttf";
 
 // pages
-import { Home, Cart, Profile, Product, Products } from "./pages";
+import { Home, Cart, Profile, Product, Products, Checkout } from "./pages";
 
 const GlobalStyle = createGlobalStyle`
     
@@ -27,7 +27,7 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const dark = {
-  background: "#121212",
+  background: "#212121",
   text: "#ffffff",
 };
 
@@ -41,6 +41,7 @@ const routes = [
   { name: "Profile", path: "/profile", component: Profile },
   { name: "Cart", path: "/cart", component: Cart },
   { name: "Product", path: "/product", component: Product },
+  { name: "Checkout", path: "/checkout", component: Checkout },
   { name: "Products", path: "/products", component: Products },
 ];
 

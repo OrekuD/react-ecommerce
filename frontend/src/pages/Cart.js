@@ -1,40 +1,24 @@
-import React from "react";
-import { CartContainer } from "../styles/CartStyles";
+import React, { useContext } from "react";
+import { CartContainer, CartTotalContainer, Content, CartTotalButton } from "../styles/CartStyles";
 import { Text } from "../styles/GlobalStyles";
-import { useContext } from "react";
+import { Link } from "react-router-dom"
 import { Context } from "../context/context";
 import CartItem from "../components/CartItem";
-import Image7 from "../images/apparel/20.jpg";
-import Image8 from "../images/apparel/19.jpg";
 
 const Cart = () => {
-  const { cart } = useContext(Context);
-
-  // const cart = [
-  //   {
-  //     id: Math.random().toString(),
-  //     name: "Nike 7",
-  //     count: 2,
-  //     total: 19.98,
-  //     description:
-  //       "Sint incididunt anim proident magna cupidatat anim sit consequat sint dolore occaecat ea non amet.",
-  //     price: 9.99,
-  //     image: Image7,
-  //   },
-  //   {
-  //     id: Math.random().toString(),
-  //     name: "Nike 8",
-  //     count: 2,
-  //     total: 19.98,
-  //     description:
-  //       "Sint incididunt anim proident magna cupidatat anim sit consequat sint dolore occaecat ea non amet.",
-  //     price: 39.99,
-  //     image: Image8,
-  //   },
-  // ];
-
+  const { cart, cartTotal, darkTheme } = useContext(Context);
   return (
     <CartContainer>
+      <CartTotalContainer>
+        <Content>
+          <Text bigger color={darkTheme ? "#000000" : "#ffffff"} > {cartTotal} </Text>
+          <Link to="/checkout" >
+            <CartTotalButton>
+              <Text color="#ffffff" > Checkout </Text>
+            </CartTotalButton>
+          </Link>
+        </Content>
+      </CartTotalContainer>
       {cart.map((item) => (
         <CartItem key={item.id} item={item} />
       ))}

@@ -17,7 +17,7 @@ import { Context } from "../context/context";
 
 const cart = 2;
 const Header = () => {
-  const { cart } = useContext(Context);
+  const { cart, darkTheme } = useContext(Context);
 
   return (
     <HeaderContainer>
@@ -42,19 +42,21 @@ const Header = () => {
         </Link>
         <Link to="/cart">
           <CartContainer>
-            <ShoppingCart2 color="#121212" size="20px" />
+            <ShoppingCart2 color={darkTheme ? "#ffffff" : "#121212"} size="20px" />
             <Text small light>
               Cart : {cart.length}
             </Text>
           </CartContainer>
         </Link>
-        <ProfileContainer>
-          <ProfileImage> </ProfileImage>
-          <Text small light>
-            Francis
-          </Text>
-          <ArrowDown color="#121212" size="12px" />
-        </ProfileContainer>
+        <Link to="/profile">
+          <ProfileContainer>
+            <ProfileImage> </ProfileImage>
+            <Text small light>
+              Francis
+            </Text>
+            <ArrowDown color={darkTheme ? "#ffffff" : "#121212"} size="12px" />
+          </ProfileContainer>
+        </Link>
       </UserDetails>
     </HeaderContainer>
   );

@@ -92,6 +92,8 @@ export const TextInput = styled.input`
   width: 90%;
   height: 90%;
   border: none;
+  background-color: ${props => props.theme.background};
+  color: ${props => props.theme.text};
 
   &:focus {
     outline: none;
@@ -118,10 +120,10 @@ export const CartContainer = styled.div`
 export const ProfileContainer = styled.div`
   display: flex;
   align-items: center;
+  cursor: pointer;
 
   svg {
     margin: 2px 0 0 10px;
-    cursor: pointer;
   }
 
   ${customMedia.lessThan("largePhone")`
