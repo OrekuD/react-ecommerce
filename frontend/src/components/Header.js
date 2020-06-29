@@ -1,48 +1,33 @@
 import React, { useContext } from "react";
 import {
   HeaderContainer,
-  LogoSection,
-  SearchToolBar,
   UserDetails,
-  SearchInputContainer,
-  TextInput,
   CartContainer,
   ProfileContainer,
-  ProfileImage,
 } from "../styles/HeaderStyles";
 import { Text } from "../styles/GlobalStyles";
 import { Search, ArrowDown, ShoppingCart2 } from "../svg/Svgs";
 import { Link } from "react-router-dom";
 import { Context } from "../context/context";
 
-const cart = 2;
 const Header = () => {
-  const { cart, darkTheme } = useContext(Context);
+  const { cart, darkTheme, userDetails } = useContext(Context);
+  const { name, image } = userDetails;
 
   return (
     <HeaderContainer>
-      <LogoSection>
-        <Link to="/">
-          <Text uppercase josefinsans>
-            ShopApp
-          </Text>
-        </Link>
-      </LogoSection>
-      <SearchToolBar>
-        <SearchInputContainer>
-          <Search color="grey" size="14px" />
-          <TextInput placeholder="Search for items here..."></TextInput>
-        </SearchInputContainer>
-      </SearchToolBar>
+      <Link to="/">
+        <Text uppercase josefinsans>
+          ShopApp
+        </Text>
+      </Link>
       <UserDetails>
-        <Link to="/products">
-          <Text small light>
-            Products
-          </Text>
-        </Link>
         <Link to="/cart">
           <CartContainer>
-            <ShoppingCart2 color={darkTheme ? "#ffffff" : "#121212"} size="20px" />
+            <ShoppingCart2
+              color={darkTheme ? "#ffffff" : "#121212"}
+              size="20px"
+            />
             <Text small light>
               Cart : {cart.length}
             </Text>
@@ -50,11 +35,10 @@ const Header = () => {
         </Link>
         <Link to="/profile">
           <ProfileContainer>
-            <ProfileImage> </ProfileImage>
+            <img src={image} alt="user" />
             <Text small light>
-              Francis
+              {name.split(" ")[0]}
             </Text>
-            <ArrowDown color={darkTheme ? "#ffffff" : "#121212"} size="12px" />
           </ProfileContainer>
         </Link>
       </UserDetails>

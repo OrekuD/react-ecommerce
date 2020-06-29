@@ -58,7 +58,6 @@ const routes = [
   { name: "Cart", path: "/cart", component: Cart },
   { name: "Product", path: "/product", component: Product },
   { name: "Checkout", path: "/checkout", component: Checkout },
-  { name: "Products", path: "/products", component: Products },
   { name: "SignIn", path: "/signin", component: SignIn },
   { name: "SignUp", path: "/signup", component: SignUp },
 ];

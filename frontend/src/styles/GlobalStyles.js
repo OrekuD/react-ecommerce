@@ -71,7 +71,6 @@ export const Text = styled.p`
 export const Container = styled.div`
   display: flex;
   padding: 0 10px;
-  margin-top: 100px;
 `;
 
 export const Card = styled.div`
