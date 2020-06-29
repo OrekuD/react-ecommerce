@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { Link } from "react-router-dom";
 import { Context } from "../context/context";
 import { Heart2, Plus, Minus } from "../svg/Svgs";
+import { URL } from "../constants/url";
 
 const Products = () => {
   const { products, manageCart, getProduct } = useContext(Context);
@@ -43,17 +44,17 @@ const Products = () => {
     <Layout>
       {products.map((product) => (
         <ProductCard
-          onMouseEnter={() => zoomIn(product.id)}
-          onMouseLeave={() => zoomOut(product.id)}
-          key={product.id}
+          onMouseEnter={() => zoomIn(product._id)}
+          onMouseLeave={() => zoomOut(product._id)}
+          key={product._id}
         >
           <Link
-            to={`/product?id=${product.id}`}
+            to={`/product?id=${product._id}`}
             style={{ height: "100%", width: "100%" }}
           >
             <img
-              id={`image-${product.id.slice(2, product.id.length - 1)}`}
-              src={product.image}
+              id={`image-${product._id.slice(2, product._id.length - 1)}`}
+              src={`${URL}/${product.productImage}`}
               alt="product"
               style={{
                 height: "100%",
@@ -64,7 +65,7 @@ const Products = () => {
             />
           </Link>
           <Content
-            id={`image-content-${product.id.slice(2, product.id.length - 1)}`}
+            id={`image-content-${product._id.slice(2, product._id.length - 1)}`}
           >
             <Button onClick={() => manageCart("REMOVE", product)}>
               <Heart2 color="#121212" size="16px" />

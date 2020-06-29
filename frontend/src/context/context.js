@@ -1,5 +1,7 @@
 import React, { createContext, useState, useEffect } from "react";
-import { products as items } from "../dummy-data";
+import { URL } from "../constants/url";
+import { Connection } from "../svg/Svgs";
+// import { products as items } from "../dummy-data";
 
 const Context = createContext();
 
@@ -10,11 +12,17 @@ const Provider = ({ children }) => {
   const [cartTotal, setCartTotal] = useState(0);
 
   useEffect(() => {
-    setProducts(items);
+    fetch(`${URL}/products`)
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data.products);
+        setProducts(data.products);
+      })
+      .catch((error) => console.log(error));
   }, []);
 
   useEffect(() => {
-    calculateCartTotal()
+    calculateCartTotal();
   }, [cart]);
 
   const toggleTheme = () => {
@@ -23,9 +31,9 @@ const Provider = ({ children }) => {
 
   const calculateCartTotal = () => {
     let total = 0;
-    cart.forEach(item => total += item.total);
+    cart.forEach((item) => (total += item.total));
     setCartTotal(total);
-  }
+  };
 
   const manageCart = (action, product) => {
     let tempCart = [];
@@ -41,7 +49,7 @@ const Provider = ({ children }) => {
         setCart([...cart, product]);
         break;
       case "REMOVE":
-        setCart(cart.filter((cartItem) => cartItem.id !== product.id));
+        setCart(cart.filter((cartItem) => cartItem._id !== product._id));
         break;
       case "EMPTY":
         setCart([]);
@@ -49,7 +57,7 @@ const Provider = ({ children }) => {
       case "INCREASE":
         tempCart = [...cart];
         updatedProductIndex = tempCart.findIndex(
-          (item) => item.id === product.id
+          (item) => item._id === product._id
         );
         updatedProduct = tempCart[updatedProductIndex];
         updatedProduct.count++;
@@ -60,11 +68,11 @@ const Provider = ({ children }) => {
       case "DECREASE":
         tempCart = [...cart];
         updatedProductIndex = tempCart.findIndex(
-          (item) => item.id === product.id
+          (item) => item._id === product._id
         );
         updatedProduct = tempCart[updatedProductIndex];
         if (updatedProduct.count === 1) {
-          setCart(cart.filter((item) => item.id !== product.id));
+          setCart(cart.filter((item) => item._id !== product._id));
           return;
         }
         updatedProduct.count--;
@@ -75,11 +83,11 @@ const Provider = ({ children }) => {
       default:
         break;
     }
+
+    console.log(cart);
   };
 
-  const getProduct = (product) => {
-    return cart.find((item) => item.id === product.id);
-  };
+  const getProduct = (product) => cart.find((item) => item._id === product._id);
 
   return (
     <Context.Provider
@@ -91,7 +99,7 @@ const Provider = ({ children }) => {
         cart,
         manageCart,
         getProduct,
-        cartTotal
+        cartTotal,
       }}
     >
       {children}

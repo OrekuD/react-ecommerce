@@ -12,23 +12,23 @@ import {
   Button,
 } from "../styles/ProductStyles";
 import Image7 from "../images/apparel/21.jpg";
+import { URL } from "../constants/url";
 
 const Product = ({ location }) => {
   const [product, setProduct] = useState({});
   const { products, manageCart, getProduct } = useContext(Context);
 
   useEffect(() => {
-    const data = queryString.parse(location.search);
-    const item = products.find((temp) => temp.id === data.id);
-    // const item = {
-    //   id: Math.random().toString(),
-    //   name: "Nike 7",
-    //   description:
-    //     "pariatur do ad mollit. Officia nulla nostrud eu in nisi officia velit elit nulla enim exercitation. Exercitation nostrud ut laboris pariatur velit. Est esse excepteur magna est. Pariatur id commodo ad aliquip exercitation esse aute deserunt adipisicing irure do enim. Enim incididunt mollit consectetur id cillum tempor occaecat ut ullamco ad aliquip sit.",
-    //   price: 9.99,
-    //   image: Image7,
-    // };
-    setProduct(item);
+    const params = queryString.parse(location.search);
+    // const item = products.find((temp) => temp.id === params.id);
+    console.log(`${URL}/products/${params.id}`);
+
+    fetch(`${URL}/products/${params.id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setProduct(data.product);
+      })
+      .catch((error) => console.log(error));
   }, [location.search]);
 
   return (
@@ -36,7 +36,7 @@ const Product = ({ location }) => {
       <LeftContainer>
         <Text>
           <img
-            src={product.image}
+            src={`${URL}/${product.productImage}`}
             alt="product-image"
             style={{ height: "100%", width: "100%", objectFit: "cover" }}
           />

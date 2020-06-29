@@ -8,16 +8,17 @@ import {
 } from "../styles/CartStyles";
 import { Minus, Plus, Cancel } from "../svg/Svgs";
 import { Context } from "../context/context";
+import { URL } from "../constants/url";
 
 const CartItem = ({ item }) => {
-  const { image, name, price, count, total } = item;
+  const { productImage, name, price, count, total } = item;
   const { manageCart, darkTheme } = useContext(Context);
   return (
     <Card>
       <LeftContainer>
         <div>
           <img
-            src={image}
+            src={`${URL}/${productImage}`}
             style={{ height: "100%", width: "100%", objectFit: "cover" }}
             alt="thumbnail"
           />
