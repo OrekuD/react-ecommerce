@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect } from "react";
 import { URL } from "../constants/url";
-import { Connection } from "../svg/Svgs";
 // import { products as items } from "../dummy-data";
+import Image from "../images/1.jpg";
 
 const Context = createContext();
 
@@ -11,6 +11,11 @@ const Provider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [cartTotal, setCartTotal] = useState(0);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [userDetails, setUserDetails] = useState({
+    name: "Fiifi Benson",
+    email: "fiifi@gmail.com",
+    image: Image,
+  });
 
   useEffect(() => {
     fetch(`${URL}/products`)
@@ -88,6 +93,8 @@ const Provider = ({ children }) => {
 
   const getProduct = (product) => cart.find((item) => item._id === product._id);
 
+  const logout = () => setIsLoggedIn(false);
+
   return (
     <Context.Provider
       value={{
@@ -100,6 +107,8 @@ const Provider = ({ children }) => {
         getProduct,
         cartTotal,
         isLoggedIn,
+        userDetails,
+        logout,
       }}
     >
       {children}

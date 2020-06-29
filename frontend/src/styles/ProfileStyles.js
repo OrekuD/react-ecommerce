@@ -36,17 +36,17 @@ export const FormContainer = styled.div`
         width: 90%;
     `}
   }
+`;
 
-  button {
-    width: 100px;
-    height: 35px;
-    margin: 15px 0;
-    border-radius: 3px;
-    border: none;
-    background-color: ${(props) => props.theme.text};
+export const ProfileContent = styled.div`
+  padding-top: 30px;
+  text-align: center;
 
-    p {
-      font-size: 16px;
-    }
+  img {
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    border: 1px solid ${(props) => props.theme.text};
+    margin-bottom: 20px;
   }
 `;

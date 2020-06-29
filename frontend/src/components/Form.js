@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FormContainer } from "../styles/ProfileStyles";
-import { Text } from "../styles/GlobalStyles";
+import { Text, Button } from "../styles/GlobalStyles";
 
 const Form = ({ signup }) => {
   return (
@@ -11,13 +11,13 @@ const Form = ({ signup }) => {
       <input placeholder="Email" required inputMode="email" />
       <input placeholder="Password" required />
       {signup && <input placeholder="Confirm Password" required />}
-      <button>
+      <Button>
         {signup ? (
           <Text invertColor> Sign up </Text>
         ) : (
           <Text invertColor> Sign in </Text>
         )}
-      </button>
+      </Button>
       {signup ? (
         <Text>
           Already have an account? <Link to="/signin"> Sign in </Link>

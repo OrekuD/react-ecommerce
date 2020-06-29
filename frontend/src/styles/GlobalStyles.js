@@ -37,6 +37,11 @@ export const Text = styled.p`
       font-size: 24px;
     `}
   ${(props) =>
+    props.huge &&
+    css`
+      font-size: 30px;
+    `}
+  ${(props) =>
     props.uppercase &&
     css`
       text-transform: uppercase;
@@ -78,4 +83,17 @@ export const Layout = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+`;
+
+export const Button = styled.button`
+  width: 100px;
+  height: 35px;
+  margin: 15px 0;
+  border-radius: 3px;
+  border: none;
+  background-color: ${(props) => props.theme.text};
+
+  p {
+    font-size: 16px;
+  }
 `;
