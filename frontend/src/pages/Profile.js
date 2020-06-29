@@ -1,25 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Text } from "../styles/GlobalStyles";
-import {
-  ProfileContainer,
-  LeftContainer,
-  RightContainer,
-} from "../styles/ProfileStyles";
-import Image from "../images/4.jpg";
+import { ProfileContainer } from "../styles/ProfileStyles";
+import { Context } from "../context/context";
+import { Profile } from "../components";
+import { SignIn } from "../pages";
 
-const Profile = () => {
+const ProfilePage = () => {
+  const { isLoggedIn } = useContext(Context);
+
   return (
-    <ProfileContainer>
-      <LeftContainer>
-        <img
-          alt="thumbnail"
-          src={Image}
-          style={{ height: "100%", width: "100%", objectFit: "cover" }}
-        />
-      </LeftContainer>
-      <RightContainer> j </RightContainer>
-    </ProfileContainer>
+    <ProfileContainer>{isLoggedIn ? <Profile /> : <SignIn />}</ProfileContainer>
   );
 };
 
-export default Profile;
+export default ProfilePage;

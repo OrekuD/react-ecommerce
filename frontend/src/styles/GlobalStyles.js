@@ -6,6 +6,12 @@ export const Text = styled.p`
   font-size: 18px;
 
   ${(props) =>
+    props.invertColor &&
+    css`
+      color: ${(props) => props.theme.background};
+    `}
+
+  ${(props) =>
     props.tiny &&
     css`
       font-size: 12px;

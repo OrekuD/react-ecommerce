@@ -10,6 +10,7 @@ const Provider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const [cartTotal, setCartTotal] = useState(0);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   useEffect(() => {
     fetch(`${URL}/products`)
@@ -83,8 +84,6 @@ const Provider = ({ children }) => {
       default:
         break;
     }
-
-    console.log(cart);
   };
 
   const getProduct = (product) => cart.find((item) => item._id === product._id);
@@ -100,6 +99,7 @@ const Provider = ({ children }) => {
         manageCart,
         getProduct,
         cartTotal,
+        isLoggedIn,
       }}
     >
       {children}

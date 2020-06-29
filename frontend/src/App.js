@@ -8,7 +8,16 @@ import { Container } from "./styles/GlobalStyles";
 import JosefinSans from "./fonts/JosefinSans.ttf";
 
 // pages
-import { Home, Cart, Profile, Product, Products, Checkout } from "./pages";
+import {
+  Home,
+  Cart,
+  Profile,
+  Product,
+  Products,
+  Checkout,
+  SignIn,
+  SignUp,
+} from "./pages";
 
 const GlobalStyle = createGlobalStyle`
     
@@ -16,12 +25,19 @@ const GlobalStyle = createGlobalStyle`
       font-family: "JosefinSans";
       src: url(${JosefinSans});
     }
-    
-    body {
-      background-color: ${(props) => props.theme.background};
-      font-family: "JosefinSans";
+
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+    
+    html {
+      background-color: ${(props) => props.theme.background};
+    }
+
+    body {
+      font-family: "JosefinSans";
     }
   
 `;
@@ -43,6 +59,8 @@ const routes = [
   { name: "Product", path: "/product", component: Product },
   { name: "Checkout", path: "/checkout", component: Checkout },
   { name: "Products", path: "/products", component: Products },
+  { name: "SignIn", path: "/signin", component: SignIn },
+  { name: "SignUp", path: "/signup", component: SignUp },
 ];
 
 const App = () => {
