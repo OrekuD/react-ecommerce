@@ -4,7 +4,7 @@ import { FormContainer } from "../styles/ProfileStyles";
 import { Text, Button } from "../styles/GlobalStyles";
 import { Context } from "../context/context";
 
-const Form = ({ signup: isSignUpPage, history }) => {
+const Form = ({ signup: isSignUpPage, setSignInScreen }) => {
   const [fullname, setFullname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,7 +20,6 @@ const Form = ({ signup: isSignUpPage, history }) => {
     };
 
     signup(userDetails);
-    history.push("/profile");
   };
 
   const login = () => {
@@ -73,11 +72,13 @@ const Form = ({ signup: isSignUpPage, history }) => {
       )}
       {isSignUpPage ? (
         <Text>
-          Already have an account? <Link to="/signin"> Sign in </Link>
+          Already have an account?
+          <span onClick={() => setSignInScreen(true)}> Sign in </span>
         </Text>
       ) : (
         <Text>
-          Don't have an account? <Link to="/signup"> Sign up </Link>
+          Don't have an account?
+          <span onClick={() => setSignInScreen(false)}> Sign up </span>
         </Text>
       )}
     </FormContainer>

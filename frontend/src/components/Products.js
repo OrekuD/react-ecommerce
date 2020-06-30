@@ -4,6 +4,7 @@ import { ProductCard, Button, Content } from "../styles/ProductsStyles";
 import gsap from "gsap";
 import { Link } from "react-router-dom";
 import { Context } from "../context/context";
+import { Ellipsis } from "react-spinners-css";
 import { Heart2, Plus, Minus } from "../svg/Svgs";
 import { URL } from "../constants/url";
 
@@ -39,6 +40,14 @@ const Products = () => {
       y: 5,
     });
   };
+
+  if (products.length <= 0) {
+    return (
+      <Layout>
+        <Ellipsis color="#be97e8" size={50} />
+      </Layout>
+    );
+  }
 
   return (
     <Layout>

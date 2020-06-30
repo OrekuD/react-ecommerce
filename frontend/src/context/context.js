@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
+import Image from "../images/user.png";
 import { URL } from "../constants/url";
-import Image from "../images/1.jpg";
 
 const Context = createContext();
 
@@ -11,17 +11,14 @@ const Provider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [cartTotal, setCartTotal] = useState(0);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userDetails, setUserDetails] = useState({
-    fullname: "Fiifi Benson",
-    email: "fiifi@gmail.com",
-    image: Image,
-  });
+  const [userDetails, setUserDetails] = useState({});
 
   useEffect(() => {
     fetch(`${URL}/products`)
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data.products);
+        console.log(data.products);
+        console.log("asdf");
         setProducts(data.products);
       })
       .catch((error) => console.log(error));
@@ -54,11 +51,12 @@ const Provider = ({ children }) => {
     })
       .then((response) => {
         console.log(response);
-        setIsLoggedIn(true);
         setUserDetails({
           fullname: fullname,
           email: email,
+          image: Image,
         });
+        setIsLoggedIn(true);
       })
       .catch((error) => {
         console.log(error);

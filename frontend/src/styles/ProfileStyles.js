@@ -14,6 +14,13 @@ export const FormContainer = styled.div`
   flex-direction: column;
   align-items: center;
 
+  p {
+    span {
+      color: grey;
+      cursor: pointer;
+    }
+  }
+
   &:first-child {
     margin-top: 20px;
   }

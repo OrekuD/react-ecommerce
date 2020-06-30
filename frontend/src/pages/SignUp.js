@@ -2,10 +2,10 @@ import React from "react";
 import { ProfileContainer } from "../styles/ProfileStyles";
 import Form from "../components/Form";
 
-const SignUp = ({ history }) => {
+const SignUp = ({ setSignInScreen }) => {
   return (
     <ProfileContainer>
-      <Form signup history={history} />
+      <Form signup setSignInScreen={setSignInScreen} />
     </ProfileContainer>
   );
 };

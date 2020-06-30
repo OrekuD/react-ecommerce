@@ -9,9 +9,10 @@ import { Text } from "../styles/GlobalStyles";
 import { ShoppingCart2 } from "../svg/Svgs";
 import { Link } from "react-router-dom";
 import { Context } from "../context/context";
+import Image from "../images/user.png";
 
 const Header = () => {
-  const { cart, darkTheme, userDetails } = useContext(Context);
+  const { cart, darkTheme, userDetails, isLoggedIn } = useContext(Context);
   const { fullname, image } = userDetails;
 
   return (
@@ -35,10 +36,21 @@ const Header = () => {
         </Link>
         <Link to="/profile">
           <ProfileContainer>
-            <img src={image} alt="user" />
-            <Text small light>
-              {fullname.split(" ")[0]}
-            </Text>
+            {isLoggedIn ? (
+              <>
+                <img src={image} alt="user" />
+                <Text small light>
+                  {fullname.split(" ")[0]}
+                </Text>
+              </>
+            ) : (
+              <>
+                <img src={Image} alt="user" />
+                <Text small light>
+                  Log In
+                </Text>
+              </>
+            )}
           </ProfileContainer>
         </Link>
       </UserDetails>
