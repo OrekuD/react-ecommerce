@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components";
-import { customMedia } from "./Breakpoints";
 
 export const Text = styled.p`
   color: ${(props) => props.theme.text};
@@ -91,6 +90,12 @@ export const Button = styled.button`
   border-radius: 3px;
   border: none;
   background-color: ${(props) => props.theme.text};
+  cursor: pointer;
+
+  &:focus {
+    border: none;
+    outline: none;
+  }
 
   p {
     font-size: 16px;

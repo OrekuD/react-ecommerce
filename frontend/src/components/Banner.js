@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Card, Text } from "../styles/GlobalStyles";
+import { Text } from "../styles/GlobalStyles";
 import { BannerContainer } from "../styles/BannerStyles";
 import Image from "../images/apparel/nike.jpg";
 import gsap from "gsap";

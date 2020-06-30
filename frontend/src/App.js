@@ -13,7 +13,6 @@ import {
   Cart,
   Profile,
   Product,
-  Products,
   Checkout,
   SignIn,
   SignUp,

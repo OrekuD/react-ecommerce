@@ -25,6 +25,7 @@ export const FormContainer = styled.div`
     border: none;
     margin: 10px 0;
     padding-left: 10px;
+    color: ${(props) => props.theme.background};
     background-color: ${(props) => props.theme.text};
 
     &:focus {

@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
+import axios from "axios";
 import { URL } from "../constants/url";
-// import { products as items } from "../dummy-data";
 import Image from "../images/1.jpg";
 
 const Context = createContext();
@@ -10,9 +10,9 @@ const Provider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const [cartTotal, setCartTotal] = useState(0);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userDetails, setUserDetails] = useState({
-    name: "Fiifi Benson",
+    fullname: "Fiifi Benson",
     email: "fiifi@gmail.com",
     image: Image,
   });
@@ -40,6 +40,31 @@ const Provider = ({ children }) => {
     cart.forEach((item) => (total += item.total));
     setCartTotal(total);
   };
+
+  const signup = (user) => {
+    const { fullname, password, email } = user;
+    axios({
+      method: "POST",
+      url: `${URL}/customer/signup`,
+      data: {
+        fullname: fullname,
+        password: password,
+        email: email,
+      },
+    })
+      .then((response) => {
+        console.log(response);
+        setIsLoggedIn(true);
+        setUserDetails({
+          fullname: fullname,
+          email: email,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const signin = (user) => {};
 
   const manageCart = (action, product) => {
     let tempCart = [];
@@ -109,6 +134,8 @@ const Provider = ({ children }) => {
         isLoggedIn,
         userDetails,
         logout,
+        signin,
+        signup,
       }}
     >
       {children}

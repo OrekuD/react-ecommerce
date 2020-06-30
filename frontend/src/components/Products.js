@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Layout, Text } from "../styles/GlobalStyles";
+import { Layout } from "../styles/GlobalStyles";
 import { ProductCard, Button, Content } from "../styles/ProductsStyles";
 import gsap from "gsap";
 import { Link } from "react-router-dom";

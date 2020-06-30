@@ -1,18 +1,17 @@
 import React, { useContext } from "react";
 import { ProfileContainer, ProfileContent } from "../styles/ProfileStyles";
 import { Text, Button } from "../styles/GlobalStyles";
-import Form from "../components/Form";
 import { Context } from "../context/context";
 import { Link } from "react-router-dom";
 
 const Profile = () => {
   const { userDetails, logout } = useContext(Context);
-  const { name, email, image } = userDetails;
+  const { fullname, image } = userDetails;
   return (
     <ProfileContainer>
       <ProfileContent>
         <img src={image} alt="user" />
-        <Text huge> {name} </Text>
+        <Text huge> {fullname} </Text>
         <Link to="/cart">
           <Text> My cart </Text>
         </Link>

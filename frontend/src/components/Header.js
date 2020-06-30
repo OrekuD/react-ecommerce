@@ -6,13 +6,13 @@ import {
   ProfileContainer,
 } from "../styles/HeaderStyles";
 import { Text } from "../styles/GlobalStyles";
-import { Search, ArrowDown, ShoppingCart2 } from "../svg/Svgs";
+import { ShoppingCart2 } from "../svg/Svgs";
 import { Link } from "react-router-dom";
 import { Context } from "../context/context";
 
 const Header = () => {
   const { cart, darkTheme, userDetails } = useContext(Context);
-  const { name, image } = userDetails;
+  const { fullname, image } = userDetails;
 
   return (
     <HeaderContainer>
@@ -37,7 +37,7 @@ const Header = () => {
           <ProfileContainer>
             <img src={image} alt="user" />
             <Text small light>
-              {name.split(" ")[0]}
+              {fullname.split(" ")[0]}
             </Text>
           </ProfileContainer>
         </Link>

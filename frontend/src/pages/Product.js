@@ -11,12 +11,11 @@ import {
   ContentTop,
   Button,
 } from "../styles/ProductStyles";
-import Image7 from "../images/apparel/21.jpg";
 import { URL } from "../constants/url";
 
 const Product = ({ location }) => {
   const [product, setProduct] = useState({});
-  const { products, manageCart, getProduct } = useContext(Context);
+  const { manageCart, getProduct } = useContext(Context);
 
   useEffect(() => {
     const params = queryString.parse(location.search);
@@ -37,7 +36,7 @@ const Product = ({ location }) => {
         <Text>
           <img
             src={`${URL}/${product.productImage}`}
-            alt="product-image"
+            alt="product"
             style={{ height: "100%", width: "100%", objectFit: "cover" }}
           />
         </Text>
