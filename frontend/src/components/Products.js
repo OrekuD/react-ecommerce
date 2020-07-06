@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Layout } from "../styles/GlobalStyles";
+import { Layout, LoadingSreen } from "../styles/GlobalStyles";
 import { ProductCard, Button, Content } from "../styles/ProductsStyles";
 import gsap from "gsap";
 import { Link } from "react-router-dom";
@@ -43,9 +43,9 @@ const Products = () => {
 
   if (products.length <= 0) {
     return (
-      <Layout>
-        <Ellipsis color="#be97e8" size={50} />
-      </Layout>
+      <LoadingSreen>
+        <Ellipsis color="#be97e8" size={50} style={{ margin: "auto" }} />
+      </LoadingSreen>
     );
   }
 

@@ -10,15 +10,17 @@ const Provider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const [cartTotal, setCartTotal] = useState(0);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userDetails, setUserDetails] = useState({});
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [userDetails, setUserDetails] = useState({
+    fullname: "Fiifi Benson",
+    email: "test@gmail.com",
+    image: Image,
+  });
 
   useEffect(() => {
     fetch(`${URL}/products`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.products);
-        console.log("asdf");
         setProducts(data.products);
       })
       .catch((error) => console.log(error));

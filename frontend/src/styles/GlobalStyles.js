@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 export const Text = styled.p`
   color: ${(props) => props.theme.text};
   font-size: 18px;
+  font-family: "JosefinSansR";
 
   ${(props) =>
     props.invertColor &&
@@ -38,7 +39,7 @@ export const Text = styled.p`
   ${(props) =>
     props.huge &&
     css`
-      font-size: 30px;
+      font-size: 26px;
     `}
   ${(props) =>
     props.uppercase &&
@@ -48,18 +49,13 @@ export const Text = styled.p`
   ${(props) =>
     props.bold &&
     css`
-      font-weight: 700;
+      font-family: "JosefinSans";
     `}
   ${(props) =>
     props.heavy &&
     css`
       font-weight: bold;
-    `}
-  ${(props) =>
-    props.josefinsans &&
-    css`
-      font-family: "JosefinSans";
-    `}  
+    `} 
   ${(props) =>
     props.color &&
     css`
@@ -100,4 +96,11 @@ export const Button = styled.button`
   p {
     font-size: 16px;
   }
+`;
+
+export const LoadingSreen = styled.div`
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  padding: 100px;
 `;

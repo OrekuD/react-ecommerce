@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import { Context } from "./context/context";
 import { Container } from "./styles/GlobalStyles";
 import JosefinSans from "./fonts/JosefinSans.ttf";
+import JosefinSansR from "./fonts/JosefinSans-Regular.ttf";
 
 // pages
 import {
@@ -24,6 +25,12 @@ const GlobalStyle = createGlobalStyle`
       font-family: "JosefinSans";
       src: url(${JosefinSans});
     }
+
+    @font-face {
+      font-family: "JosefinSansR";
+      src: url(${JosefinSansR});
+    }
+
 
     * {
       box-sizing: border-box;
