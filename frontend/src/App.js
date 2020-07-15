@@ -9,15 +9,7 @@ import JosefinSans from "./fonts/JosefinSans.ttf";
 import JosefinSansR from "./fonts/JosefinSans-Regular.ttf";
 
 // pages
-import {
-  Home,
-  Cart,
-  Profile,
-  Product,
-  Checkout,
-  SignIn,
-  SignUp,
-} from "./pages";
+import { Home, Cart, Profile, Product, Checkout } from "./pages";
 
 const GlobalStyle = createGlobalStyle`
     
@@ -64,8 +56,6 @@ const routes = [
   { name: "Cart", path: "/cart", component: Cart },
   { name: "Product", path: "/product", component: Product },
   { name: "Checkout", path: "/checkout", component: Checkout },
-  { name: "SignIn", path: "/signin", component: SignIn },
-  { name: "SignUp", path: "/signup", component: SignUp },
 ];
 
 const App = () => {

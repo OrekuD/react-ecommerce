@@ -1,17 +1,10 @@
 import React, { useContext } from "react";
-import {
-  CartContainer,
-  CartTotalContainer,
-  Content,
-  CartTotalButton,
-} from "../styles/CartStyles";
-import { Text } from "../styles/GlobalStyles";
-import { Link } from "react-router-dom";
+import { CartContainer } from "../styles/CartStyles";
 import { Context } from "../context/context";
 import { CartItem, CartSummary } from "../components";
 
 const Cart = () => {
-  const { cart, cartTotal, darkTheme } = useContext(Context);
+  const { cart } = useContext(Context);
   return (
     <CartContainer>
       <CartSummary />

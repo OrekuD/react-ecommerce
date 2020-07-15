@@ -90,6 +90,12 @@ export const ProfileContentLeft = styled.div`
     margin-left: 20px;
     justify-content: space-between;
     padding: 10px 0 20px 0;
+
+    .theme {
+      p {
+        cursor: pointer;
+      }
+    }
   }
 `;
 

@@ -2,20 +2,18 @@ import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
 import Image from "../images/user.png";
 import { URL } from "../constants/url";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 const Context = createContext();
 
 const Provider = ({ children }) => {
-  const [darkTheme, setDarkTheme] = useState(true);
+  const [darkTheme, setDarkTheme] = useLocalStorage("darkTheme", true);
   const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState([]);
-  const [cartTotal, setCartTotal] = useState(0);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [userDetails, setUserDetails] = useState({
-    fullname: "Fiifi Benson",
-    email: "test@gmail.com",
-    image: Image,
-  });
+  const [cart, setCart] = useLocalStorage("cart", []);
+  const [wishlist, setWishlist] = useLocalStorage("wishlist", []);
+  const [cartTotal, setCartTotal] = useLocalStorage("cartTotal", 0);
+  const [isLoggedIn, setIsLoggedIn] = useLocalStorage("isLoggedIn", false);
+  const [userDetails, setUserDetails] = useLocalStorage("useDetails", {});
 
   useEffect(() => {
     fetch(`${URL}/products`)
@@ -27,17 +25,13 @@ const Provider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    calculateCartTotal();
+    let total = 0;
+    cart.forEach((item) => (total += item.total));
+    setCartTotal(total);
   }, [cart]);
 
   const toggleTheme = () => {
     setDarkTheme(!darkTheme);
-  };
-
-  const calculateCartTotal = () => {
-    let total = 0;
-    cart.forEach((item) => (total += item.total));
-    setCartTotal(total);
   };
 
   const signup = (user) => {
@@ -52,11 +46,12 @@ const Provider = ({ children }) => {
       },
     })
       .then((response) => {
-        console.log(response);
+        console.log(response.data.token);
         setUserDetails({
           fullname: fullname,
           email: email,
           image: Image,
+          token: response.data.token,
         });
         setIsLoggedIn(true);
       })
@@ -72,7 +67,7 @@ const Provider = ({ children }) => {
     let updatedProductIndex = 0;
     switch (action) {
       case "ADD":
-        if (getProduct(product)) {
+        if (isProductInCart(product)) {
           return;
         }
         product.count = 1;
@@ -116,31 +111,50 @@ const Provider = ({ children }) => {
     }
   };
 
-  const getProduct = (product) => cart.find((item) => item._id === product._id);
+  const isProductInCart = (product) =>
+    cart.find((item) => item._id === product._id);
 
-  const logout = () => setIsLoggedIn(false);
+  const isProductInWishlist = (product) =>
+    wishlist.find((item) => item._id === product._id);
 
-  return (
-    <Context.Provider
-      value={{
-        darkTheme,
-        toggleTheme,
-        setDarkTheme,
-        products,
-        cart,
-        manageCart,
-        getProduct,
-        cartTotal,
-        isLoggedIn,
-        userDetails,
-        logout,
-        signin,
-        signup,
-      }}
-    >
-      {children}
-    </Context.Provider>
-  );
+  const modifyWishlist = (product) => {
+    let tempWishlist = [...wishlist];
+    if (isProductInWishlist(product)) {
+      const productIndex = tempWishlist.findIndex(
+        (item) => item._id === product._id
+      );
+      tempWishlist.splice(productIndex, 1);
+      setWishlist(tempWishlist);
+      return;
+    }
+    tempWishlist.unshift(product);
+    setWishlist(tempWishlist);
+  };
+
+  const logout = () => {
+    setIsLoggedIn(false);
+    setUserDetails({});
+  };
+
+  const state = {
+    darkTheme,
+    toggleTheme,
+    setDarkTheme,
+    products,
+    cart,
+    manageCart,
+    isProductInCart,
+    cartTotal,
+    isLoggedIn,
+    userDetails,
+    logout,
+    signin,
+    signup,
+    isProductInWishlist,
+    modifyWishlist,
+  };
+
+  return <Context.Provider value={state}>{children}</Context.Provider>;
 };
 
 const Consumer = Context.Consumer;

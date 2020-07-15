@@ -6,14 +6,15 @@ import {
   SectionHeader,
   Group,
 } from "../styles/ProfileStyles";
-import { Text, Button } from "../styles/GlobalStyles";
+import { Text } from "../styles/GlobalStyles";
 import { Context } from "../context/context";
-import { Link } from "react-router-dom";
 import CartSummary from "./CartSummary";
 
 const Profile = () => {
-  const { userDetails, logout, cart } = useContext(Context);
-  const { fullname, image, email } = userDetails;
+  const { userDetails, cart, darkTheme, toggleTheme, logout } = useContext(
+    Context
+  );
+  const { fullname, email } = userDetails;
   return (
     <ProfileContainer>
       <ProfileContentLeft>
@@ -25,8 +26,15 @@ const Profile = () => {
             <Text huge> {fullname} </Text>
             <Text color="grey"> {email} </Text>
           </div>
-          <div>
-            <Text> Dark theme </Text>
+          <div className="theme">
+            {darkTheme ? (
+              <Text onClick={toggleTheme}> Light theme </Text>
+            ) : (
+              <Text onClick={toggleTheme}> Dark theme </Text>
+            )}
+          </div>
+          <div className="theme">
+            <Text onClick={logout}> Log out </Text>
           </div>
         </div>
       </ProfileContentLeft>

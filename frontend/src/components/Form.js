@@ -1,8 +1,8 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
 import { FormContainer } from "../styles/ProfileStyles";
 import { Text, Button } from "../styles/GlobalStyles";
 import { Context } from "../context/context";
+import { validateDetails } from "../util/validateDetails";
 
 const Form = ({ signup: isSignUpPage, setSignInScreen }) => {
   const [fullname, setFullname] = useState("");
@@ -13,12 +13,19 @@ const Form = ({ signup: isSignUpPage, setSignInScreen }) => {
   const { signin, signup } = useContext(Context);
 
   const createAccount = () => {
+    // setIsLoading(true);
     const userDetails = {
       fullname,
       email,
       password,
+      confirmPassword,
     };
 
+    const { isValid, message } = validateDetails(true, userDetails);
+    if (!isValid) {
+      alert("Invalid details", message);
+      return;
+    }
     signup(userDetails);
   };
 
@@ -28,7 +35,11 @@ const Form = ({ signup: isSignUpPage, setSignInScreen }) => {
       password,
     };
 
-    signin(userDetails);
+    const { isValid, message } = validateDetails(false, userDetails);
+    if (!isValid) {
+      alert(message);
+      return;
+    }
   };
 
   return (

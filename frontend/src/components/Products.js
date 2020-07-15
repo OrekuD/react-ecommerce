@@ -9,7 +9,13 @@ import { Heart2, Plus, Minus } from "../svg/Svgs";
 import { URL } from "../constants/url";
 
 const Products = () => {
-  const { products, manageCart, getProduct } = useContext(Context);
+  const {
+    products,
+    manageCart,
+    isProductInCart,
+    isProductInWishlist,
+    modifyWishlist,
+  } = useContext(Context);
 
   const zoomIn = (id) => {
     if (window.innerWidth <= 1024) {
@@ -76,10 +82,14 @@ const Products = () => {
           <Content
             id={`image-content-${product._id.slice(2, product._id.length - 1)}`}
           >
-            <Button onClick={() => manageCart("REMOVE", product)}>
-              <Heart2 color="#121212" size="16px" />
+            <Button onClick={() => modifyWishlist(product)}>
+              {isProductInWishlist(product) ? (
+                <Heart2 color="#210000" size="16px" />
+              ) : (
+                <Heart2 color="#121212" size="16px" />
+              )}
             </Button>
-            {getProduct(product) ? (
+            {isProductInCart(product) ? (
               <Button onClick={() => manageCart("REMOVE", product)}>
                 <Minus color="#121212" size="14px" />
               </Button>

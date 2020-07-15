@@ -15,7 +15,7 @@ import { URL } from "../constants/url";
 
 const Product = ({ location }) => {
   const [product, setProduct] = useState({});
-  const { manageCart, getProduct } = useContext(Context);
+  const { manageCart, isProductInCart } = useContext(Context);
 
   useEffect(() => {
     const params = queryString.parse(location.search);
@@ -51,7 +51,7 @@ const Product = ({ location }) => {
             <Text bigger> {product.price} </Text>
           </ContentTop>
           <Text> {product.description} </Text>
-          {getProduct(product) ? (
+          {isProductInCart(product) ? (
             <Button onClick={() => manageCart("REMOVE", product)}>
               <Text color="#ffffff" tiny uppercase>
                 Remove from cart
